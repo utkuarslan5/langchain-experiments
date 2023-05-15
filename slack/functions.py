@@ -10,9 +10,10 @@ from langchain.prompts.chat import (
 load_dotenv(find_dotenv())
 
 
-def draft_email(user_input, name="Dave"):
+def draft_email(user_input, name="Utku"):
     chat = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=1)
-
+    signature = f"Kind regards, \n\{name}"
+    
     template = """
     
     You are a helpful assistant that drafts an email reply based on an a new email.
@@ -26,8 +27,7 @@ def draft_email(user_input, name="Dave"):
     Make sure to sign of with {signature}.
     
     """
-
-    signature = f"Kind regards, \n\{name}"
+    
     system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
     human_template = "Here's the email to reply to and consider any other comments from the user for reply as well: {user_input}"
