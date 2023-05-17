@@ -117,7 +117,7 @@ def handle_mentions(body, say):
     say(response)
 
 
-# DemoAgain1
+# Update
 @flask_app.route("/slack/events", methods=["POST"])
 @require_slack_verification
 def slack_events():
